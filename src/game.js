@@ -48,7 +48,7 @@ window.Game = {
             std.draw.rect(0, 4, this.player_pos, 8, this.player_size);
             std.draw.rect(0, this.ball_pos_x, this.ball_pos_y, this.ball_size, this.ball_size);
             std.draw.font('Tiresias', 32);
-            std.draw.text(game.width / 4, 16, this.ball_pos_y)//this.score);
+            std.draw.text(game.width / 4, 16, this.score);
             std.draw.text(game.width / 4 * 3, 16, this.highscore);
         },
         exit: (std, game) => {
