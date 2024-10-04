@@ -30,10 +30,11 @@
       <canvas id="gameCanvas"></canvas>
     </main>
     <script src="game.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/gamelly/gly-engine@develop/src/engine/core/html5/core-native-html5.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/gamelly/gly-engine@develop/src/engine/core/html5/driver-wasmoon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@gamely/core-native-html5@0.0.7/dist/index.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/gamelly/gly-engine@main/src/engine/core/html5/driver-wasmoon.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', async () => {
+        gly.engine.set('https://cdn.jsdelivr.net/npm/@gamely/gly-engine@0.0.7/dist/main.lua')
         await gly.wasmoon(Game)
     })
     </script>
