@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pong</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style>
+        *, *::after, *::before {
+            touch-action: none;
+            box-sizing: border-box;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            height: 99.998vh;
+            display: flex;
+            overflow: hidden;
+            justify-content: center;
+            align-items: start;
+            background-color: gray;
+        }
+        canvas {
+            image-rendering: pixelated;
+        }
+    </style>
+  </head>
+  <body>
+    <main>
+      <canvas id="gameCanvas"></canvas>
+    </main>
+    <script src="game.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gamelly/gly-engine@develop/src/engine/core/html5/core-native-html5.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/gamelly/gly-engine@develop/src/engine/core/html5/driver-wasmoon.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        await gly.wasmoon(Game)
+    })
+    </script>
+  </body>
+</html>
