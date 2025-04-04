@@ -30,12 +30,25 @@
       <canvas id="gameCanvas"></canvas>
     </main>
     <script src="game.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@gamely/core-native-html5@0.0.7/dist/index.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/gamelly/gly-engine@0.0.7/src/engine/core/html5/driver-wasmoon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@gamely/core-native-html5@0.1.2"></script>
+    <script type="module">
+    import { LuaFactory, LuaMultiReturn } from 'https://cdn.jsdelivr.net/npm/wasmoon@1.16.0/+esm'
+    window.LuaFactory = LuaFactory
+    window.LuaMultiReturn = LuaMultiReturn
+    </script>
     <script>
-      document.addEventListener('DOMContentLoaded', async () => {
-        gly.engine.set('https://cdn.jsdelivr.net/npm/@gamely/gly-engine@0.0.7/dist/main.lua')
-        await gly.wasmoon(Game)
+    document.addEventListener('DOMContentLoaded', () => {
+      core_native_html5()
+        .set_el_root('main')
+        .set_el_canvas('#gameCanvas')
+        .set_library('wasmoon', window.LuaFactory, window.LuaMultiReturn)
+        .set_library('resize')
+        .set_library('gamepad')
+        .set_library('keyboard')
+        .set_library('runtime', {unfocus_pause: true, uptime: true})
+        .set_engine('https://cdn.jsdelivr.net/npm/@gamely/gly-engine@0.0.7/dist/main.lua')
+        .set_game(Game)
+        .build()
     })
     </script>
   </body>
